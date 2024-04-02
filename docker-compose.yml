@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  httpalu:
+    image: ghcr.io/yanorei32/http-alu:latest@sha256:ad16bf31882bc20abf4c21b81ff5c184a173752a47c2c29218a405fc65bfc85b
+    hostname: httpalu
+    container_name: httpalu__httpalu
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+
+    networks:
+      - default
+
+  cloudflared:
+    image: cloudflare/cloudflared:2023.1.0@sha256:11101e453ddcd33b7c2175de701c3d29c11b401fe14b74e6c8f371d65fe7558a
+    hostname: cloudflared
+    container_name: httpalu__cloudflared
+    restart: unless-stopped
+
+    environment:
+      TUNNEL_METRICS: 0.0.0.0:9126
+      TUNNEL_LOGFILE: /dev/stdout
+
+    command: tunnel run --token ${TUNNEL_TOKEN}
+    user: root
+
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+
+    networks:
+      - default
+
+networks:
+  default:
+    name: httpalu__default
