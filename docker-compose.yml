@@ -16,7 +16,7 @@ services:
       - default
 
   cloudflared:
-    image: cloudflare/cloudflared:2023.1.0@sha256:178af10b5b68fd4568990a454dd9d5f39a873f85927151aca9b8a0233d4a8aaa
+    image: cloudflare/cloudflared:2024.3.0@sha256:8acfc9e4e65e0d1e26686177a3a0c4baa3b0330c0fc6adc899c2b673bc938e77
     hostname: cloudflared
     container_name: httpalu__cloudflared
     restart: unless-stopped
