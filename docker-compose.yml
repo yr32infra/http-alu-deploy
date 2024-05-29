@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   httpalu:
-    image: ghcr.io/yanorei32/http-alu:latest@sha256:642f4310f936088b0f63a562fe1bcd78b59603a9217ffabd30f4e8c10e55fd0c
+    image: ghcr.io/yanorei32/http-alu:latest@sha256:9296ac4bfcb3f185cd5af6f6917b6d4f4ccb5081ffa2954d2abddf2848f2c9b7
     hostname: httpalu
     container_name: httpalu__httpalu
     restart: unless-stopped
